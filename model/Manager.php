@@ -4,7 +4,7 @@ class Manager
 {
     protected function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog_mvc;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=mini_cms;charset=utf8', 'root', '');
         return $db;
     }
 }
