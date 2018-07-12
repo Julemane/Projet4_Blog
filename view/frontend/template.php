@@ -7,11 +7,16 @@
     </head>
 
     <body>
-      <header>
-        <?php include("include/header.php"); ?>
-      </header>
+      <!--Debut header-->
+      <?php include("include/header.php"); ?>
+      <!--Fin header-->
+
 
 
       <?= $content ?>
+      <!--Debut footer-->
+      <?php include("include/footer.php"); ?>
+      <!--Fin footer-->
+
     </body>
 </html>
