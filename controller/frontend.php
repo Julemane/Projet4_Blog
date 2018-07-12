@@ -8,12 +8,13 @@ function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
-
+    //affichage de la liste des billets
     require('view/frontend/listPostsView.php');
 }
 
 function post()
 {
+    //temporaire conditionne le login
     $user = false;
 
     $postManager = new PostManager();
@@ -21,7 +22,7 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-
+    //On affiche la possibilité ou non de commenté en fonction du status de l'utilisateur
     if ($user == true)
     {
     require('view/frontend/logedPostView.php');
