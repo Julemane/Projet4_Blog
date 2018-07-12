@@ -7,6 +7,11 @@
     </head>
 
     <body>
-        <?= $content ?>
+      <header>
+        <?php include("include/header.php"); ?>
+      </header>
+
+
+      <?= $content ?>
     </body>
 </html>

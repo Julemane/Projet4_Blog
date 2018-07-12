@@ -14,7 +14,7 @@ function listPosts()
 
 function post()
 {
-    //temporaire conditionne le login
+    //temporaire : conditionne le login
     $user = false;
 
     $postManager = new PostManager();
