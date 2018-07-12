@@ -14,6 +14,9 @@ function listPosts()
 
 function post()
 {
+    $user = true;
+    if($user == false)
+    {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
@@ -21,6 +24,18 @@ function post()
     $comments = $commentManager->getComments($_GET['id']);
 
     require('view/frontend/postView.php');
+    }
+    else
+    {
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+        require('view/frontend/unlogedpostView.php');
+
+    }
+
 }
 
 function addComment($postId, $author, $comment)
@@ -28,6 +43,7 @@ function addComment($postId, $author, $comment)
     $commentManager = new CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
+
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
