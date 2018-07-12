@@ -19,7 +19,7 @@
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
+        <input type="text" id="author" name="author" value="<?php if(isset($author)) echo $author ?>" />
     </div>
     <div>
         <label for="comment">Commentaire</label><br />
