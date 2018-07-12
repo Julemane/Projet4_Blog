@@ -14,26 +14,21 @@ function listPosts()
 
 function post()
 {
-    $user = true;
-    if($user == false)
-    {
+    $user = false;
+
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('view/frontend/postView.php');
+    if ($user == true)
+    {
+    require('view/frontend/logedPostView.php');
     }
     else
     {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
-        require('view/frontend/unlogedpostView.php');
-
+    require('view/frontend/unlogedpostView.php');
     }
 
 }
