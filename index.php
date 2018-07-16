@@ -1,7 +1,19 @@
 <?php
 require('controller/frontend.php');
 
+
 try {
+            if (isset($_POST['nickname']) && isset($_POST['password']))
+            {
+                $nickname = $_POST['nickname'];
+                $password = $_POST['password'];
+                verifyMember($password, $nickname);
+            }
+
+
+
+
+
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
             listPosts();

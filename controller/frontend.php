@@ -3,6 +3,8 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/LogManager.php');
+
 
 function listPosts()
 {
@@ -47,4 +49,36 @@ function addComment($postId, $author, $comment)
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+
+
+function verifyMember($password, $nickname)
+{
+    $logManager = new LogManager();
+    $member = $logManager->getMember($nickname);
+    var_dump($member);
+
+    $isPasswordCorrect = password_verify($password, $member['password']);
+    if (!$member)
+
+    {
+        echo 'Mauvais identifiant ou mot de passe !';
+
+    }
+    else
+    {
+    //Creation des variables de session
+        if ($isPasswordCorrect) {
+                echo 'connecté';
+        }
+        else {
+
+            echo 'Mauvais identifiant ou mot de passe !';
+
+        }
+    }
+
+
+
+
 }
