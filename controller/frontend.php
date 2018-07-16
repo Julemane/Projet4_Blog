@@ -17,7 +17,7 @@ function listPosts()
 function post()
 {
     //temporaire : conditionne le login
-    $user = false;
+    $loggeduser = true;
 
     $postManager = new PostManager();
     $commentManager = new CommentManager();
@@ -25,7 +25,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
     //On affiche la possibilité ou non de commenté en fonction du status de l'utilisateur
-    if ($user == true)
+    if ($loggeduser == true)
     {
     require('view/frontend/logedPostView.php');
     }
@@ -52,34 +52,45 @@ function addComment($postId, $author, $comment)
 }
 
 
-function verifyMember($password, $nickname)
+function verifyMember($checkPassword, $checkNickname)
 {
     $logManager = new LogManager();
-    $member = $logManager->getMember($nickname);
-    var_dump($member);
-    var_dump($nickname);
+    $member = $logManager->getMember($checkNickname);
 
-    $isPasswordCorrect = password_verify($password, $member['password']);
+    var_dump($member);
+    var_dump($checkPassword);
+    //comparaison du mdp saisie avec le mdp hash de la bdd
+    $isPasswordCorrect = password_verify($checkPassword, $member['password']);
+    //Si $member=false le membre n'est pas existant en bdd
     if (!$member)
 
     {
-        echo 'Mauvais identifiant ou mot de passe !';
+        echo 'Mauvais utilisateur ou mot de passe!';
 
     }
     else
+    //Le membre existe 2 possibilité le mdp corresponds
     {
     //Creation des variables de session
         if ($isPasswordCorrect) {
                 echo 'connecté';
         }
+    //Le mdp corresponds pas
         else {
 
-            echo 'Mauvais identifiant ou mot de passe !';
+            echo 'Mauvais utilisateur ou mot de passe!';
 
         }
     }
 
+//Passage en parametres des variables d'information récupérer par le formulaire
+function addMember()
+    {
+        //creation new RegisterManager()
+        //$newMember = $RegisterManager pushMember(pseudo, mdp , mail)
+        //transformation du pass en pass haché
 
-
+        //Vérification de l'existance ou non du pseudo dans la bdd
+    }
 
 }

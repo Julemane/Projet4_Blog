@@ -5,14 +5,10 @@ require('controller/frontend.php');
 try {
             if (isset($_POST['nickname']) && isset($_POST['password']))
             {
+                 $checkPassword = $_POST['password'];
                 $checkNickname = $_POST['nickname'];
-                $checkPassword = $_POST['password'];
                 verifyMember($checkPassword, $checkNickname);
             }
-
-
-
-
 
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
