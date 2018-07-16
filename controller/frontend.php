@@ -57,6 +57,7 @@ function verifyMember($password, $nickname)
     $logManager = new LogManager();
     $member = $logManager->getMember($nickname);
     var_dump($member);
+    var_dump($nickname);
 
     $isPasswordCorrect = password_verify($password, $member['password']);
     if (!$member)

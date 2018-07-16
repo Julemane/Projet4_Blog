@@ -5,9 +5,9 @@ require('controller/frontend.php');
 try {
             if (isset($_POST['nickname']) && isset($_POST['password']))
             {
-                $nickname = $_POST['nickname'];
-                $password = $_POST['password'];
-                verifyMember($password, $nickname);
+                $checkNickname = $_POST['nickname'];
+                $checkPassword = $_POST['password'];
+                verifyMember($checkPassword, $checkNickname);
             }
 
 
