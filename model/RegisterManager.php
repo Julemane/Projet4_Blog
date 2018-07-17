@@ -1,9 +1,10 @@
 <?php
 require_once("model/Manager.php");
 class RegisterManager extends Manager
+
 {
     //passage en parametre des valeurs du formulaire et du mdp haché
-    public function pushMember($nickname, $pass_hache, $mail)
+   public function pushMember($nickname, $pass_hache, $mail)
     {
         $db = $this->dbConnect();
 
@@ -18,5 +19,19 @@ class RegisterManager extends Manager
 
               'mail' => $mail));
     }
+
+    public function checkNickname($nicknameToCheck)
+    {
+      $db = $this->dbConnect();
+      //requete retourne 1 si pseudo existe
+      $req = $db->prepare('SELECT COUNT(*) AS nickname FROM members WHERE nicknameToCheck = ?');
+      $req->execute(array($nicknameToCheck));
+      $nickname = $req->fetch();
+
+      return $nickname['nickname'];
+
+    }
+
+
 
 }

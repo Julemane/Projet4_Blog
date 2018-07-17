@@ -4,6 +4,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/LogManager.php');
+require_once('model/RegisterManager.php');
 
 
 function listPosts()
@@ -52,45 +53,55 @@ function addComment($postId, $author, $comment)
 }
 
 
-function verifyMember($checkPassword, $checkNickname)
+function verifyMember($userPassword, $userNickname)
 {
     $logManager = new LogManager();
-    $member = $logManager->getMember($checkNickname);
+    $member = $logManager->getMember($userNickname);
 
     var_dump($member);
-    var_dump($checkPassword);
+    var_dump($userPassword);
     //comparaison du mdp saisie avec le mdp hash de la bdd
-    $isPasswordCorrect = password_verify($checkPassword, $member['password']);
-    //Si $member=false le membre n'est pas existant en bdd
+    $isPasswordCorrect = password_verify($userPassword, $member['password']);
+    /*if ($member && $userPassword==$member['password'])
+    {
+        echo 'Hello '.$member['nickname'].' vous etes connecté';
+    }*/
+     //Si $member=false le membre n'est pas existant en bdd
     if (!$member)
 
     {
-        echo 'Mauvais utilisateur ou mot de passe!';
+        throw new Exception('Mauvais utilisateur ou mot de passe!');
 
     }
     else
     //Le membre existe 2 possibilité le mdp corresponds
     {
-    //Creation des variables de session
+    //A FAIRE : Creation des variables de session
         if ($isPasswordCorrect) {
                 echo 'connecté';
         }
     //Le mdp corresponds pas
         else {
 
-            echo 'Mauvais utilisateur ou mot de passe!';
-
+            throw new Exception('Mauvais utilisateur ou mot de passe!');
         }
     }
 
 //Passage en parametres des variables d'information récupérer par le formulaire
-function addMember()
+function addMember($nickname)
     {
-        //creation new RegisterManager()
-        //$newMember = $RegisterManager pushMember(pseudo, mdp , mail)
+        //Vérification de l'existance ou non du pseudo dans la bdd
+        $registerManager = new RegisterManager();
+        $checkMember = $registerManager->checkNickname($nickname);
+
+        var_dump($checkMember);
+
+
+
+
         //transformation du pass en pass haché
 
-        //Vérification de l'existance ou non du pseudo dans la bdd
+
     }
 
 }
