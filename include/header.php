@@ -18,7 +18,7 @@
   </section>
   <section id="register">
     <p>Creation de compte</p>
-    <form action="index.php" method="post">
+    <form action="index.php?action=newUser" method="post">
               <label>Pseudo
                 <input type="text" name="nickname">
               </label>
