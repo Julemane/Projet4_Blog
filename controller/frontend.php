@@ -92,7 +92,8 @@ function addMember($nickname, $password, $mail)
 
         if($checkMember)
         {
-             throw new Exception('Pseudo déja utilisé, veuillez en choisir un autre');
+             echo'Pseudo déja utilisé, veuillez en choisir un autre';
+
 
         }
         //Si le pseudo n'est pas utilisé

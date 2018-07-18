@@ -31,6 +31,18 @@ a
     color: blue;
 }
 
+#login
+{
+    border: 1px solid black;
+    width:50%;
+}
+
+#register
+{
+    border:1px solid black;
+    width:50%;
+}
+
 footer
 {
     border:2px solid red;

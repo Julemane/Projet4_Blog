@@ -5,7 +5,7 @@
 
   </nav>
   <section id="login">
-    <p>Connexion</p>
+    <h4>Connexion</h4>
     <form action="index.php?action=login" method="post">
               <label>Pseudo
                 <input type="text" name="userNickname">
@@ -17,7 +17,7 @@
             </form>
   </section>
   <section id="register">
-    <p>Creation de compte</p>
+    <h4>Creation de compte</h4>
     <form action="index.php?action=newUser" method="post">
               <label>Votre pseudo
                 <input type="text" name="nickname">
@@ -28,7 +28,6 @@
               <label>Votre mot de passe
                 <input type="password" name="password">
               </label>
-
                <input type="submit" value="Creer mon compte">
     </form>
 
