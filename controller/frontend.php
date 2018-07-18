@@ -62,16 +62,10 @@ function verifyMember($userPassword, $userNickname)
     var_dump($userPassword);
     //comparaison du mdp saisie avec le mdp hash de la bdd
     $isPasswordCorrect = password_verify($userPassword, $member['password']);
-    /*if ($member && $userPassword==$member['password'])
-    {
-        echo 'Hello '.$member['nickname'].' vous etes connecté';
-    }*/
-     //Si $member=false le membre n'est pas existant en bdd
+    //Si $member=false le membre n'est pas existant en bdd
     if (!$member)
-
     {
         throw new Exception('Mauvais utilisateur ou mot de passe!');
-
     }
     else
     //Le membre existe 2 possibilité le mdp corresponds
@@ -86,22 +80,30 @@ function verifyMember($userPassword, $userNickname)
             throw new Exception('Mauvais utilisateur ou mot de passe!');
         }
     }
+}
 
 //Passage en parametres des variables d'information récupérer par le formulaire
-function addMember($nickname)
-    {
-        //Vérification de l'existance ou non du pseudo dans la bdd
+function addMember($nickname, $password, $mail)
+{
+
         $registerManager = new RegisterManager();
+        //Vérification de l'existance ou non du pseudo dans la bdd
         $checkMember = $registerManager->checkNickname($nickname);
 
-        var_dump($checkMember);
+        if($checkMember)
+        {
+             throw new Exception('Pseudo déja utilisé, veuillez en choisir un autre');
+
+        }
+        //Si le pseudo n'est pas utilisé
+        else{
+            //transformation du pass en pass haché
+            $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+
+            //envoi au modele pour insertion dans BDD
+            $push = $registerManager->pushMember($nickname, $pass_hash, $mail);
+        }
 
 
-
-
-        //transformation du pass en pass haché
-
-
-    }
 
 }

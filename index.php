@@ -39,15 +39,17 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
-        //Creation d'un nouveau membre
+        //Creation d'un nouveau membre A FAIRE : AMELIORATION DES CONDITIONS
         elseif ($_GET['action'] == 'newUser') {
-            if (!empty($_POST['nickname']) ) {
-                addMember($_POST['nickname']);
+            if (isset($_POST['nickname']) && !empty($_POST['nickname']))
+            {
+                addMember($_POST['nickname'], $_POST['password'], $_POST['mail']);
 
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
             }
         }
+
     }
     //Affichage de la liste des billets
     else{

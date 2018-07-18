@@ -19,9 +19,16 @@
   <section id="register">
     <p>Creation de compte</p>
     <form action="index.php?action=newUser" method="post">
-              <label>Pseudo
+              <label>Votre pseudo
                 <input type="text" name="nickname">
               </label>
+              <label>Votre Email
+                <input type="mail" name="mail">
+              </label>
+              <label>Votre mot de passe
+                <input type="password" name="password">
+              </label>
+
                <input type="submit" value="Creer mon compte">
     </form>
 
