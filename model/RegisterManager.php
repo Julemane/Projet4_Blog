@@ -31,5 +31,4 @@ class RegisterManager extends Manager
       return $nickname['nickname'];
     }
 
-
 }

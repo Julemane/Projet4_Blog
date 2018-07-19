@@ -7,6 +7,7 @@
 
 <h4>Creation de compte</h4>
     <form action="index.php?action=newUser" method="post">
+      <p>Veuillez renseigner vos informations afin de créer votre compte</p>
               <p>
                 <label>Votre pseudo
                   <input type="text" name="nickname" value="" required>
@@ -29,7 +30,7 @@
               </p>
                 <input type="submit" value="Creer mon compte">
 
-              <span id="formInfo">
+              <span id="formstatus">
                <?php if(isset($info)){
                 echo $info;
               }?>

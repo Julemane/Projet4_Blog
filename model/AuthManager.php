@@ -6,7 +6,7 @@ class AuthManager extends Manager
     public function getMember($nickname)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, password, nickname FROM members WHERE nickname = :nickname');;
+        $req = $db->prepare('SELECT id, password, nickname, mail FROM members WHERE nickname = :nickname');;
         $req->execute(array('nickname' => $nickname));
         $result = $req->fetch();
 

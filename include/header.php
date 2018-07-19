@@ -4,7 +4,8 @@
   <nav>
 
   </nav>
-  <!-- Si var session connecter on affiche bienvenue nom membre etc...-->
+
+
   <section id="login">
     <h4>Connexion</h4>
     <form action="index.php?action=login" method="post">
@@ -21,5 +22,12 @@
     <p>Pas encore de compte ?</p>
     <a href="index.php?action=creationUser">Creer un compte</a>
   </section>
+   <?php
+    if (isset($_SESSION['nickname']))
+    {
+      echo 'Bienvenue'.' '.$_SESSION['nickname'];
+    }
+
+  ?>
 </header>
 
