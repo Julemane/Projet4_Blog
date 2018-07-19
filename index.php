@@ -39,14 +39,20 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
-        //Creation d'un nouveau membre A FAIRE : AMELIORATION DES CONDITIONS
+        //redirection vers la View de creation de membre
+        elseif ($_GET['action'] == 'creationUser') {
+           require('view/frontend/newAcountView.php');
+        }
+        //Creation d'un nouveau membre
         elseif ($_GET['action'] == 'newUser') {
-            if (isset($_POST['nickname']) && !empty($_POST['nickname']))
+            if (isset($_POST['nickname']) && !empty($_POST['nickname'])
+                && isset($_POST['mail']) && !empty($_POST['mail'])
+                && isset($_POST['password']) && !empty($_POST['password'])
+                && isset($_POST['password2']) && !empty($_POST['password2']))
             {
-                addMember($_POST['nickname'], $_POST['password'], $_POST['mail']);
-
+                addMember($_POST['nickname'], $_POST['mail'], $_POST['password'], $_POST['password2']  );
             }else {
-                throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
+                throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
 
@@ -59,7 +65,8 @@ try {
 
 //Gestion des erreurs
 catch(Exception $e) {
-    listPosts($e->getMessage());
-    //echo 'Erreur : ' . $e->getMessage();
+    //passage du message d'erreur a listPost et affichage dans listPostsView
+    //listPosts($e->getMessage());
+    echo 'Erreur : ' . $e->getMessage();
 
 }

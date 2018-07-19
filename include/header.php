@@ -4,35 +4,22 @@
   <nav>
 
   </nav>
+  <!-- Si var session connecter on affiche bienvenue nom membre etc...-->
   <section id="login">
     <h4>Connexion</h4>
     <form action="index.php?action=login" method="post">
               <label>Pseudo
-                <input type="text" name="userNickname">
+                <input type="text" name="userNickname" required>
               </label>
               <label>Mot de passe
-                <input type="password" name="userPassword">
+                <input type="password" name="userPassword" required>
               </label>
               <input type="submit" value="Se connecter">
             </form>
   </section>
   <section id="register">
-    <h4>Creation de compte</h4>
-    <form action="index.php?action=newUser" method="post">
-              <label>Votre pseudo
-                <input type="text" name="nickname">
-              </label>
-              <label>Votre Email
-                <input type="mail" name="mail">
-              </label>
-              <label>Votre mot de passe
-                <input type="password" name="password">
-              </label>
-               <input type="submit" value="Creer mon compte">
-    </form>
-
-
-
+    <p>Pas encore de compte ?</p>
+    <a href="index.php?action=creationUser">Creer un compte</a>
   </section>
 </header>
 

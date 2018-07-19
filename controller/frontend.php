@@ -6,7 +6,7 @@ require_once('model/CommentManager.php');
 require_once('model/AuthManager.php');
 require_once('model/RegisterManager.php');
 
-//rend le parametre non obligatoire
+//Rend le parametre non obligatoire
 function listPosts($message = null)
 {
     $postManager = new PostManager(); // Création d'un objet
@@ -55,8 +55,8 @@ function addComment($postId, $author, $comment)
 
 function verifyMember($userPassword, $userNickname)
 {
-    $logManager = new LogManager();
-    $member = $logManager->getMember($userNickname);
+    $authManager = new AuthManager();
+    $member = $authManager->getMember($userNickname);
 
     var_dump($member);
     var_dump($userPassword);
@@ -72,7 +72,8 @@ function verifyMember($userPassword, $userNickname)
     {
     //A FAIRE : Creation des variables de session
         if ($isPasswordCorrect) {
-                echo 'connecté';
+            header('location:index.php');
+
         }
     //Le mdp corresponds pas
         else {
@@ -83,16 +84,20 @@ function verifyMember($userPassword, $userNickname)
 }
 
 //Passage en parametres des variables d'information récupérer par le formulaire
-function addMember($nickname, $password, $mail)
+function addMember($nickname, $mail, $password, $password2)
 {
 
         $registerManager = new RegisterManager();
         //Vérification de l'existance ou non du pseudo dans la bdd
         $checkMember = $registerManager->checkNickname($nickname);
 
-        if($checkMember)
-        {
-             throw new Exception('Pseudo deja utilisé ');
+        if($checkMember){
+             $info = 'Ce pseudo est déjà utilisé';
+             require('view/frontend/newAcountView.php');
+        }
+        elseif($password != $password2){
+            $info = 'Les mots de passe ne correspondent pas';
+            require('view/frontend/newAcountView.php');
         }
         //Si le pseudo n'est pas utilisé
         else{
@@ -101,6 +106,9 @@ function addMember($nickname, $password, $mail)
 
             //envoi au modele pour insertion dans BDD
             $push = $registerManager->pushMember($nickname, $pass_hash, $mail);
+            $info = 'Compte créé avec succès';
+            require('view/frontend/newAcountView.php');
+
         }
 
 
