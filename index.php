@@ -45,7 +45,7 @@ try {
             {
                 addMember($_POST['nickname'], $_POST['password'], $_POST['mail']);
 
-            } else {
+            }else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
             }
         }
@@ -55,11 +55,11 @@ try {
     else{
         listPosts();
         }
-
 }
 
 //Gestion des erreurs
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    listPosts($e->getMessage());
+    //echo 'Erreur : ' . $e->getMessage();
 
 }

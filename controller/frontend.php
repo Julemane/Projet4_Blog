@@ -3,11 +3,11 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-require_once('model/LogManager.php');
+require_once('model/AuthManager.php');
 require_once('model/RegisterManager.php');
 
-
-function listPosts()
+//rend le parametre non obligatoire
+function listPosts($message = null)
 {
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
@@ -18,7 +18,7 @@ function listPosts()
 function post()
 {
     //temporaire : conditionne le login
-    $loggeduser = true;
+    $loggeduser = false;
 
     $postManager = new PostManager();
     $commentManager = new CommentManager();
@@ -44,7 +44,7 @@ function addComment($postId, $author, $comment)
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
 
-    if ($affectedLines === false) {
+    if ($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
@@ -92,9 +92,7 @@ function addMember($nickname, $password, $mail)
 
         if($checkMember)
         {
-             echo'Pseudo déja utilisé, veuillez en choisir un autre';
-
-
+             throw new Exception('Pseudo deja utilisé ');
         }
         //Si le pseudo n'est pas utilisé
         else{
@@ -104,7 +102,6 @@ function addMember($nickname, $password, $mail)
             //envoi au modele pour insertion dans BDD
             $push = $registerManager->pushMember($nickname, $pass_hash, $mail);
         }
-
 
 
 }

@@ -5,6 +5,7 @@
 
 
 <?php
+echo $message;
 while ($data = $posts->fetch())
 {
 ?>
