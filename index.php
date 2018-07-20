@@ -55,6 +55,10 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
+        //logout membre
+        elseif ($_GET['action'] == 'logout'){
+            logout();
+        }
 
     }
     //Affichage de la liste des billets

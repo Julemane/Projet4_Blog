@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
@@ -17,32 +17,19 @@ function listPosts($message = null) //$message=null rend le parametre non obliga
 
 function post()
 {
-    //temporaire : conditionne le login
-    $loggeduser = false;
-
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-    //On affiche la possibilité ou non de commenté en fonction du status de l'utilisateur
-    if ($loggeduser == true)
-    {
-    require('view/frontend/logedPostView.php');
-    }
-    else
-    {
-    require('view/frontend/unlogedpostView.php');
-    }
+    require('view/frontend/postView.php');
 
 }
 
 function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
-
 
     if ($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -70,12 +57,10 @@ function verifyMember($userPassword, $userNickname)
     {
     //A FAIRE : Creation des variables de session
         if ($isPasswordCorrect) {
-
-            session_start();
+            $_SESSION['id'] = $member['id'];
             $_SESSION['nickname'] = $member['nickname'];
             $_SESSION['password'] = $member['password'];
             $_SESSION['mail'] = $member['mail'];
-
             //on redirige vers la page d'accueil qui prendra en compte les variable de session
             header('location:index.php');
 
@@ -114,18 +99,16 @@ function addMember($nickname, $mail, $password, $password2)
                 }
         }else{
             throw new Exception('Ce pseudo est déjà utilisé');
-
             }
     }
     catch(Exception $e){
          $info = $e->getMessage();
          require('view/frontend/newAcountView.php');
     }
+}
 
-
-
-
-
-
-
+function logout()
+{
+    session_destroy ();
+    header('location:index.php');
 }

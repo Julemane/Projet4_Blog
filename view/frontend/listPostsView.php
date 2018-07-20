@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = SITE_NAME; ?>
 
 <?php ob_start(); ?>
 <p>Derniers billets du blog :</p>
@@ -13,7 +13,6 @@ while ($data = $posts->fetch())
             <?= htmlspecialchars($data['title']) ?>
             <em>le <?= $data['creation_date_fr'] ?></em>
         </h3>
-
         <p>
             <?= nl2br(htmlspecialchars($data['content'])) ?>
             <br />

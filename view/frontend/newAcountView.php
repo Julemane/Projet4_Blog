@@ -30,7 +30,7 @@
               </p>
                 <input type="submit" value="Creer mon compte">
 
-              <span id="formstatus">
+              <span id="formStatus">
                <?php if(isset($info)){
                 echo $info;
               }?>
