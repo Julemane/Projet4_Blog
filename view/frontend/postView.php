@@ -1,5 +1,5 @@
 
-<?php $title = SITE_NAME.' '.htmlspecialchars($post['title']); ?>
+<?php $title = SITE_NAME.'-'.htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retour à la liste des billets</a></p>
@@ -23,7 +23,7 @@ if(isset($_SESSION['nickname']))
         <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
             <div>
                 <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" value="<?php if(isset($author)) echo $author ?>" />
+                <input type="text" id="author" name="author" value="<?php if(isset($_SESSION['nickname'])) echo $_SESSION['nickname'] ?>" readonly />
             </div>
                 <div>
                     <label for="comment">Commentaire</label><br />
@@ -36,8 +36,8 @@ if(isset($_SESSION['nickname']))
         <?php
     }else{
         ?>
-        <p>Veuillez vous connecter pour pouvoir commenter</p>
-        <p>Si vous n'avez <a href="index.php?action=creationUser">pas encore de compte</a> veuillez en créer un.</p>
+        <p>Veuillez vous authentifier pour pouvoir commenter cet article.</p>
+        <p>Si vous n'avez pas encore de compte vous pouvez en créer un <a href="index.php?action=creationUser">ici</a>.</p>
         <?php
     }
 
