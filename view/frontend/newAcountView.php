@@ -1,9 +1,7 @@
 
-<?php $title = "creation de compte" ?>
+<?php $title = SITE_NAME.'-'.'Creation de compte' ?>
 
 <?php ob_start(); ?>
-
-<a href="index.php">Retour à la liste des billets</a>
 
 <h4>Creation de compte</h4>
     <form action="index.php?action=newUser" method="post">
@@ -31,9 +29,10 @@
                 <input type="submit" value="Creer mon compte">
 
               <span id="formStatus">
+                <p>
                <?php if(isset($info)){
                 echo $info;
-              }?>
+              }?></p>
               </span>
 
     </form>

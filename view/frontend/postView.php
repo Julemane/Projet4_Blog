@@ -2,7 +2,6 @@
 <?php $title = SITE_NAME.'-'.htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-<p><a href="index.php">Retour à la liste des billets</a></p>
 <!--Affichage du billets-->
 <div class="news">
     <h3>

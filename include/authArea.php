@@ -4,8 +4,15 @@
    //Si Mmembre connecter
     if (isset($_SESSION['nickname']))
     {
+      if($_SESSION['userLevel'] == 'admin' ){
+        ?>
+        Vous etes connecter en tant qu'administrateur : <?php echo htmlspecialchars($_SESSION['nickname']);
+
+      }else{
+        ?>
+        Vous etes connecter en tant que membre : <?php echo htmlspecialchars($_SESSION['nickname']);
+      }
       ?>
-      <p>Bienvenue dans votre espace membre <?php echo htmlspecialchars($_SESSION['nickname']);?>
       <p><a href="index.php?action=logout">Se déconnecter</a></p>
       <?php
     }

@@ -8,8 +8,15 @@
 
     <body>
       <!--Debut header-->
-      <?php include("include/header.php"); ?>
-      <!--Fin header-->
+      <?php
+      if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+        include("include/headerAdmin.php");
+
+      }else{
+        include("include/header.php");
+      }
+      ?>
+       <!--Fin header-->
 
       <!--Zone de connection/creation compte-->
       <?php include("include/authArea.php"); ?>

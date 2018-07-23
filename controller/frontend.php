@@ -48,27 +48,33 @@ function verifyMember($userPassword, $userNickname)
     //comparaison du mdp saisie avec le mdp hash de la bdd
     $isPasswordCorrect = password_verify($userPassword, $member['password']);
     //Si $member=false le membre n'est pas existant en bdd
-    if (!$member)
-    {
-        throw new Exception('Mauvais utilisateur ou mot de passe!');
-    }
-    else
-    //Le membre existe 2 possibilité le mdp corresponds
-    {
-    //A FAIRE : Creation des variables de session
-        if ($isPasswordCorrect) {
-            $_SESSION['id'] = $member['id'];
-            $_SESSION['nickname'] = $member['nickname'];
-            $_SESSION['password'] = $member['password'];
-            $_SESSION['mail'] = $member['mail'];
-            //on redirige vers la page d'accueil qui prendra en compte les variable de session
-            header('location:index.php');
-
-        }
-    //Le mdp corresponds pas
-        else {
+    try{
+        if (!$member)
+        {
             throw new Exception('Mauvais utilisateur ou mot de passe!');
         }
+        else
+        //Le membre existe 2 possibilité le mdp corresponds
+        {
+        //A FAIRE : Creation des variables de session
+            if ($isPasswordCorrect) {
+                $_SESSION['id'] = $member['id'];
+                $_SESSION['nickname'] = $member['nickname'];
+                $_SESSION['password'] = $member['password'];
+                $_SESSION['mail'] = $member['mail'];
+                $_SESSION['userLevel'] = $member['userLevel'];
+                //on redirige vers la page d'accueil qui prendra en compte les variable de session
+                header('location:index.php');
+            }
+        //Le mdp corresponds pas
+            else {
+                throw new Exception('Mauvais utilisateur ou mot de passe!');
+            }
+        }
+    }
+    catch(Exception $e){
+         $authInfo = $e->getMessage();
+         require('include/login.php');
     }
 }
 
