@@ -2,13 +2,7 @@
 
 
 <?php ob_start(); ?>
-<span>
-  <?php
-    if(isset($adminInfo)){
-      echo $adminInfo;
-    }
-  ?>
-</span>
+
 <form action="index.php?action=newPost" method="post">
   <p>
     <label>Auteur

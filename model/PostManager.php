@@ -27,6 +27,21 @@ class PostManager extends Manager //la connexion Ã  la Bdd est maintenant heritÃ
         $affectedLines = $post->execute(array($title, $author, $content));
         return $affectedLines;
     }
+    public function postDelete($postId) {
+    $db = $this->dbConnect();
+    $post = $db->prepare("DELETE FROM posts WHERE id=".$_GET['id']);
+    $affectedLines = $post->execute(array($postId));
+    return $affectedLines;
+    }
+
+    public function postEdit($id, $title, $author, $content) {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE posts SET title = ?, author = ?, content = ? WHERE id = ?');
+    $post = $req->execute(array($title, $author, $content, $id));
+    return $post;
+}
+
+
 
 
 }

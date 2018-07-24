@@ -22,8 +22,8 @@
         <td><?php echo htmlspecialchars($data['title']); ?></td>
         <td><?php echo htmlspecialchars($data['author']); ?></td>
         <td><?php echo htmlspecialchars($data['creation_date_fr']); ?></td>
-        <td><a href="../index.php?action=editPostView&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
-        <td><a href="../index.php?action=deletePost&amp;id=<?php echo $data['id']; ?>">Supprimer</a></td>
+        <td><a href="index.php?action=editPostView&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
+        <td><a href="index.php?action=deletePost&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')">Supprimer</a></td>
 
     </tr>
 

@@ -89,6 +89,40 @@ try {
                 throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
             }
         }
+        elseif($_GET['action'] == 'deletePost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deletePost($_GET['id']);
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+            }else{
+                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+            }
+        }
+        elseif ($_GET['action'] == 'editPostView') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                viewEditPost($_GET['id']);
+
+            } else {
+            throw new Exception('Aucun article à éditer !');
+            }
+        }
+
+        elseif($_GET['action'] == 'editPost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                    editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content']);
+
+
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+
+            }else{
+                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+            }
+        }
 
 
 

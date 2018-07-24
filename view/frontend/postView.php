@@ -2,7 +2,7 @@
 <?php $title = SITE_NAME.'-'.htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-<!--Affichage du billets-->
+<!--AFFICHAGE DES ARTICLES-->
 <div class="news">
     <h3>
         <?= htmlspecialchars($post['title']) ?>
@@ -12,12 +12,25 @@
     <p>
         <?= nl2br(htmlspecialchars($post['content'])) ?>
     </p>
+    <p>
+            <?php
+            //Mode edition depuis l'article si connecter en Admin
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+            ?>
+                <a href="index.php?action=editPostView&amp;id=<?php echo $post['id'];?>" >Editer</a>
+
+                <a href="index.php?action=deletePost&amp;id=<?php echo $post['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')">Supprimer</a>
+
+            <?php
+            }
+            ?>
+    </p>
 </div>
 <?php
 if(isset($_SESSION['nickname']))
     {
         ?>
-        <!--Formulaire d'envoi de commentaire-->
+<!--FORMULAIRE D'ENVOI DE COMMENTAIRE SI USER CONNECTER-->
         <h2>Commentaires</h2>
         <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
             <div>
@@ -42,7 +55,7 @@ if(isset($_SESSION['nickname']))
 
 ?>
 
-<!--Affichage des commentaire-->
+<!--AFFICHAGE DES COMMENTAIRES-->
 <?php
 while ($comment = $comments->fetch())
 {
