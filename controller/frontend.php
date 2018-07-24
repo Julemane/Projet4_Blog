@@ -7,7 +7,7 @@ require_once('model/AuthManager.php');
 require_once('model/RegisterManager.php');
 
 
-function listPosts($message = null) //$message=null rend le parametre non obligatoire
+function listPosts()
 {
     $postManager = new PostManager();
     $posts = $postManager->getPosts();

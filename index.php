@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 //Routeur
 
 try {
@@ -55,6 +56,43 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
+        //Acces a la zone d'administration
+        elseif($_GET['action'] == 'admin'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                require('view/backend/adminPanelView.php');
+            }else{
+                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+            }
+        }
+        elseif($_GET['action'] == 'writeNewPost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                require('view/backend/newPostView.php');
+
+            }else{
+                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+            }
+
+        }
+        elseif($_GET['action'] == 'newPost'){
+            if (!empty($_POST['author']) && !empty($_POST['content'])&& !empty($_POST['title'])){
+                newPost($_POST['title'], $_POST['author'], $_POST['content']);
+
+
+            }else {
+            throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
+        elseif($_GET['action'] == 'managePosts'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listPostsBack();
+            }else{
+                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+            }
+        }
+
+
+
+
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();
@@ -72,5 +110,7 @@ catch(Exception $e) {
     //passage du message d'erreur a listPost et affichage dans listPostsView
     //listPosts($e->getMessage());
     echo 'Erreur : ' . $e->getMessage();
+    echo '</br>';
+    echo'<p>Retour à <a href="index.php">l\'accueil</a>';
 
 }

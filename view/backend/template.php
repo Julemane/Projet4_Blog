@@ -8,18 +8,25 @@
 
     <body>
       <!--Debut header-->
-      <?php include("include/header.php"); ?>
+      <?php
+        include("include/header.php"); ?>
        <!--Fin header-->
+       <nav id=adminNav>
+        <ul>
+          <li><a href="index.php?action=writeNewPost">Ecrire un nouvel article</a></li>
+          <li><a href="index.php?action=managePosts">Gestion des articles</a></li>
 
-      <!--Zone de connection/creation compte-->
-      <?php include("include/authArea.php"); ?>
 
 
 
+
+
+       </nav>
 
       <?= $content ?>
+
       <!--Debut footer-->
-      <?php include("include/footer.php"); ?>
+
       <!--Fin footer-->
 
     </body>
