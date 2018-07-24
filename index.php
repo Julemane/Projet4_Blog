@@ -2,7 +2,7 @@
 require('controller/frontend.php');
 require('controller/backend.php');
 //Routeur
-
+$accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
 
     if (isset($_GET['action'])) {
@@ -61,7 +61,7 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/adminPanelView.php');
             }else{
-                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+                throw new Exception($accesdenied);
             }
         }
         elseif($_GET['action'] == 'writeNewPost'){
@@ -69,7 +69,7 @@ try {
                 require('view/backend/newPostView.php');
 
             }else{
-                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+                throw new Exception($accesdenied);
             }
 
         }
@@ -86,7 +86,7 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 listPostsBack();
             }else{
-                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+                throw new Exception($accesdenied);
             }
         }
         elseif($_GET['action'] == 'deletePost'){
@@ -97,35 +97,33 @@ try {
                     throw new Exception('Aucun id d\'article');
                 }
             }else{
-                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+                throw new Exception($accesdenied);
             }
         }
+        //Vers la page d'edition d'article
         elseif ($_GET['action'] == 'editPostView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                viewEditPost($_GET['id']);
-
-            } else {
-            throw new Exception('Aucun article à éditer !');
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    viewEditPost($_GET['id']);
+                }else {
+                    throw new Exception('Aucun article à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
-
+        //validation de l'edition de l'article
         elseif($_GET['action'] == 'editPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0){
                     editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content']);
-
-
                 }else{
                     throw new Exception('Aucun id d\'article');
                 }
-
             }else{
-                throw new Exception('Vous tentez d\'accéder à un espace réservé aux administrateurs !');
+                throw new Exception($accesdenied);
             }
         }
-
-
-
 
         //logout membre
         elseif ($_GET['action'] == 'logout'){
