@@ -18,7 +18,7 @@ try {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
         }
-        //Ajoyter un commentaire
+        //Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
@@ -64,6 +64,7 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //vers la page d'ecriture d'un article
         elseif($_GET['action'] == 'writeNewPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/newPostView.php');
@@ -73,15 +74,16 @@ try {
             }
 
         }
+        //Ecrire un nouvel article depuis la zone admin
         elseif($_GET['action'] == 'newPost'){
             if (!empty($_POST['author']) && !empty($_POST['content'])&& !empty($_POST['title'])){
                 newPost($_POST['title'], $_POST['author'], $_POST['content']);
-
 
             }else {
             throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
+        //vers la page de gestion des articles
         elseif($_GET['action'] == 'managePosts'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 listPostsBack();
@@ -89,6 +91,7 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //Suppression d'un article
         elseif($_GET['action'] == 'deletePost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if(isset($_GET['id']) && $_GET['id'] > 0){
@@ -124,12 +127,18 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-
+        //vers la page de gestion des commentaires
+        elseif($_GET['action'] == 'manageComments'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listCommentsBack();
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();
         }
-
     }
     //Affichage de la liste des billets
     else{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 16 juil. 2018 à 15:04
+-- Généré le :  mer. 25 juil. 2018 à 08:51
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.0.29
 
@@ -36,14 +36,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `comments`
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
-(11, 1, 'Jérémy', 'Premier commentaire de test', '2018-07-12 13:32:26');
+(11, 1, 'Jérémy', 'Premier commentaire de test', '2018-07-12 13:32:26'),
+(12, 1, 'ptimimi', 'hello all !!', '2018-07-20 12:39:10'),
+(13, 2, 'ptimimi', 'c\'est vrai que c\'est beau !!', '2018-07-20 12:40:45'),
+(14, 17, 'ptimimi', 'test', '2018-07-24 19:14:39');
 
 -- --------------------------------------------------------
 
@@ -58,16 +61,17 @@ CREATE TABLE IF NOT EXISTS `members` (
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `inscription_date` date NOT NULL,
+  `userLevel` varchar(20) NOT NULL DEFAULT 'member',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `members`
 --
 
-INSERT INTO `members` (`id`, `nickname`, `password`, `mail`, `inscription_date`) VALUES
-(1, 'ptimimi', '120790', 'jimimi@hotmail.fr', '2018-07-16'),
-(2, 'boby', '150390', 'bobi@hotmail.com', '2018-07-16');
+INSERT INTO `members` (`id`, `nickname`, `password`, `mail`, `inscription_date`, `userLevel`) VALUES
+(6, 'ptimimi', '$2y$10$mEWreR9lpNaDXJ4lXQwW0.ko7BJQwhUbyrmPWjfsheHcwicTlrk3y', 'jimimi@hotmail.fr', '2018-07-23', 'admin'),
+(7, 'magali', '$2y$10$3m04/vxLq.lUM58T4bH7dO43mYUk5pu4o4TEw4MtnBDpx0Tm8wLG6', 'magali@hotmail.com', '2018-07-23', 'member');
 
 -- --------------------------------------------------------
 
@@ -79,17 +83,19 @@ DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
+  `author` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
-(1, 'Article 1', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.', '2018-07-12 10:19:19');
+INSERT INTO `posts` (`id`, `title`, `author`, `content`, `creation_date`) VALUES
+(17, 'l\'Alaska grandeur nature', 'jeremy', '                       Comme Hawaï, l\'Alaska est séparé du Mainland et se situe au nord-ouest du Canada. Bordé par l\'océan Arctique au nord et la mer de Béring et l\'océan Pacifique au sud, ce territoire est séparé de l\'Asie par le détroit de Béring. En outre, ses divisions administratives ne sont pas des comtés mais des boroughs.\r\n\r\nAlaska signifie « grande Terre » ou « continent » en aléoute3. Cette région, que l\'on appelait au XIXe siècle l\'« Amérique russe », tire son nom d\'une longue presqu\'île, au nord-ouest du continent américain, à environ 1 000 km au sud du détroit de Bering, et qui se lie, vers le sud, aux îles Aléoutiennes. Le surnom de l\'Alaska est « la dernière                     ', '2018-07-24 14:41:53'),
+(31, 'Lorem', 'Jérémy', '    \r\nQu\'est-ce que le Lorem Ipsum?\r\n\r\nLe Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.\r\n              ', '2018-07-24 19:18:28');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

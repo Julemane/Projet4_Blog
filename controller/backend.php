@@ -54,6 +54,13 @@ function viewEditPost($postId)
     require('view/backend/editPostView.php');
 }
 
+function listCommentsBack()
+{
+    $commentManager = new CommentManager();
+    $comments = $commentManager->getAllComments();
+    require('view/backend/manageCommentsView.php');
+
+}
 
 
 
