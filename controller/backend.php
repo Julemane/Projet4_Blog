@@ -1,5 +1,9 @@
 <?php
 require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
+
+
+
 
 function newPost($title, $author, $content)
 {
@@ -59,6 +63,29 @@ function listCommentsBack()
     $commentManager = new CommentManager();
     $comments = $commentManager->getAllComments();
     require('view/backend/manageCommentsView.php');
+}
+
+function signalCom($comId)
+{
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->warnedCom($comId);
+    try{
+        if ($affectedLines === false) {
+            throw new Exception('Impossible de signaler le commentaire');
+        }else {
+            throw new Exception('Commentaire signalé avec succès');
+        }
+    }
+    catch(Exception $e){
+         $message = $e->getMessage();
+         //On récupère l'id de l'article sur lequel était l'user avant signalement
+         $chaine = $_SERVER['HTTP_REFERER'];
+         $postId = substr ($chaine, strlen ($chaine) - 2);
+         //La fonction va renvoyer l'user sur l'article dont il a signalé le commentaire et affiche le message
+         signaledCommentPost($postId, $message);
+
+    }
+
 
 }
 

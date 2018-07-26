@@ -10,7 +10,6 @@
       <!--Debut header-->
       <?php include("include/header.php"); ?>
        <!--Fin header-->
-
       <!--Zone de connection/creation compte-->
       <?php include("include/authArea.php"); ?>
 

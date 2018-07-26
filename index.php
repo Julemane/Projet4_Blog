@@ -135,6 +135,14 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //signalement d'un commentaire
+        elseif ($_GET['action'] == 'signal') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            signalCom($_GET['id']);
+        } else {
+            throw new Exception('Aucun identifiant de commentaire envoyé');
+        }
+    }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();
@@ -150,8 +158,12 @@ try {
 catch(Exception $e) {
     //passage du message d'erreur a listPost et affichage dans listPostsView
     //listPosts($e->getMessage());
+    ob_start();
     echo 'Erreur : ' . $e->getMessage();
     echo '</br>';
     echo'<p>Retour à <a href="index.php">l\'accueil</a>';
+    $content = ob_get_clean();
+
+    require('view/frontend/template.php');
 
 }

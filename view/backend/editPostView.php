@@ -13,7 +13,7 @@
   <label>Contenu
     <textarea name="content" rows="15" cols="80"/> <?php echo $post['content']; ?>  </textarea>
   </label>
-  <input type="submit" name="valider" value="OK"/>
+  <input type="submit" name="valider" value="Valider"/>
 </form>
 
 <?php $content = ob_get_clean(); ?>

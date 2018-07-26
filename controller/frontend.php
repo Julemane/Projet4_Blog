@@ -23,6 +23,16 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
     require('view/frontend/postView.php');
+}
+
+function signaledCommentPost($postId, $message)
+{
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
+    $post = $postManager->getPost($postId);
+    $comments = $commentManager->getComments($postId);
+    require('view/frontend/postView.php');
 
 }
 
