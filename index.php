@@ -137,12 +137,45 @@ try {
         }
         //signalement d'un commentaire
         elseif ($_GET['action'] == 'signal') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            signalCom($_GET['id']);
-        } else {
-            throw new Exception('Aucun identifiant de commentaire envoyé');
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                signalCom($_GET['id']);
+            }else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
         }
-    }
+        //vers la vue edition de commentaire
+        elseif ($_GET['action'] == 'editCommentView') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                viewEditCom($_GET['id']);
+            }else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
+        }
+        //validation de l'edition de commentaire
+        elseif($_GET['action'] == 'editComment'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                    editCom($_GET['id'], $_POST['author'], $_POST['comment'], $_POST['status']);
+                }else{
+                    throw new Exception('Aucun id de commentaire');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+         //Suppression d'un commentaire
+        elseif($_GET['action'] == 'deleteComment'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deleteCom($_GET['id']);
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();

@@ -4,7 +4,6 @@ require_once('model/CommentManager.php');
 
 
 
-
 function newPost($title, $author, $content)
 {
   $PostManager = new PostManager();
@@ -47,10 +46,9 @@ function editPost($id, $title, $author, $content)
     }
     else {
         header('Location: index.php?action=post&id='.$id);
-
     }
-
 }
+
 function viewEditPost($postId)
 {
     $postManager = new PostManager();
@@ -83,11 +81,42 @@ function signalCom($comId)
          $postId = substr ($chaine, strlen ($chaine) - 2);
          //La fonction va renvoyer l'user sur l'article dont il a signalé le commentaire et affiche le message
          signaledCommentPost($postId, $message);
-
+         header('location:index.php?action=post&id='.$postId);
     }
-
-
 }
 
+function viewEditCom($comId)
+{
+     $commentManager = new CommentManager();
+     $comment = $commentManager->getComment($comId);
+     require('view/backend/editCommentView.php');
+}
+
+function editCom($id, $author, $comment, $status)
+{
+
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->commentEdit($id, $author, $comment, $status);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'éditer le commentaire');
+
+    }
+    else {
+        header('Location:index.php?action=manageComments');
+    }
+
+}
+function deleteCom($comId)
+{
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->commentDelete($comId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer l\'article');
+    }
+    else {
+
+        header('Location: index.php?action=manageComments');
+    }
+}
 
 

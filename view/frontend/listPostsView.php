@@ -14,7 +14,7 @@ while ($data = $posts->fetch())
             par <?= $data['author'] ?>
         </h3>
         <p>
-            <?= nl2br(htmlspecialchars($data['content']))?>
+            <?= nl2br($data['content'])?>
             <br />
             <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Voir l'article complet</a></em>
         </p>

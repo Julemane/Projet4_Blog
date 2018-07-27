@@ -23,7 +23,7 @@ class CommentManager extends Manager
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT id, post_id, author, comment, status, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments  ORDER BY status DESC');
+        $comments = $db->query('SELECT id, post_id, author, comment, status, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments  ORDER BY status DESC');
         return $comments;
     }
 
@@ -34,6 +34,32 @@ class CommentManager extends Manager
         $affectedLines = $comment->execute(array($comId));
         return $affectedLines;
 
+    }
+   public function getComment($comId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, author, comment, status FROM comments WHERE id = ?');
+        $req->execute(array($comId));
+        $comment = $req->fetch();
+
+        return $comment;
+    }
+
+    public function commentEdit($id, $author, $comment, $status)
+    {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE comments SET id = ?, author = ?, comment = ?, status = ? WHERE id ='.$id);
+    $affectedLines = $req->execute(array($id, $author, $comment, $status));
+
+    return $affectedLines;
+    }
+
+    public function commentDelete($comId)
+    {
+        $db = $this->dbConnect();
+        $comment = $db->prepare("DELETE FROM comments WHERE id=".$_GET['id']);
+        $affectedLines = $comment->execute(array($comId));
+        return $affectedLines;
     }
 
 

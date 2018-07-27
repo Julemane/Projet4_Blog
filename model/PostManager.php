@@ -39,7 +39,7 @@ class PostManager extends Manager //la connexion Ã  la Bdd est maintenant heritÃ
     $req = $db->prepare('UPDATE posts SET title = ?, author = ?, content = ? WHERE id = ?');
     $post = $req->execute(array($title, $author, $content, $id));
     return $post;
-}
+    }
 
 
 
