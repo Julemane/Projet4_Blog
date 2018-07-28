@@ -9,8 +9,7 @@
             </div>
                 <div>
                     <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment">
-                      <?php echo $comment['comment']; ?>
+                    <textarea id="comment" name="comment"><?php echo $comment['comment']; ?>
                     </textarea>
                 </div>
                 <div>

@@ -6,7 +6,7 @@ require_once('model/CommentManager.php');
 require_once('model/AuthManager.php');
 require_once('model/RegisterManager.php');
 
-
+//AFFICHE LA LISTE DES ARTICLES
 function listPosts()
 {
     $postManager = new PostManager();
@@ -15,27 +15,21 @@ function listPosts()
     require('view/frontend/listPostsView.php');
 }
 
-function post()
+//AFFICHE UN ARTICLE
+function post($postId = null, $message = null)
+//Passage en option de l'id article et du message pour le signalement de commentaire
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-
+    //Dans le cas ou un commentaire a été signalé $postId contient l'id de l'article
+    if(isset($postId)){
+        $_GET['id'] = $postId;
+    }
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
     require('view/frontend/postView.php');
 }
-
-function signaledCommentPost($postId, $message)
-{
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-
-    $post = $postManager->getPost($postId);
-    $comments = $commentManager->getComments($postId);
-    require('view/frontend/postView.php');
-
-}
-
+//AJOUT D'UN COMMENTAIRE PAR L'USER
 function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
@@ -49,7 +43,7 @@ function addComment($postId, $author, $comment)
     }
 }
 
-//VERIFICATION DE L'EXISTANCE D'UN MEMBRE EN BDD
+//VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
 function verifyMember($userPassword, $userNickname)
 {
     $authManager = new AuthManager();

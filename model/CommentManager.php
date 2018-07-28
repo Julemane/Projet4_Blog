@@ -44,6 +44,15 @@ class CommentManager extends Manager
 
         return $comment;
     }
+     public function getPostByComment($comId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT post_id FROM comments WHERE id = ?');
+        $req->execute(array($comId));
+        $postId = $req->fetch();
+
+        return $postId;
+    }
 
     public function commentEdit($id, $author, $comment, $status)
     {

@@ -75,17 +75,15 @@ function signalCom($comId)
         }
     }
     catch(Exception $e){
-         $message = $e->getMessage();
-         //On récupère l'id de l'article sur lequel était l'user avant signalement
-         $chaine = $_SERVER['HTTP_REFERER'];
-         $postId = substr($chaine, strlen($chaine) - 2);
-         //La fonction va renvoyer l'user sur l'article dont il a signalé le commentaire et affiche le message
-         signaledCommentPost($postId, $message);
-         header('location:index.php?action=post&id='.$postId);
+        $message = $e->getMessage();
+        //On récupere l'id de l'article correspondant au commentaire
+        $affectedLines = $commentManager->getPostByComment($comId);
+        $postId = $affectedLines[0];
+        //On envoi à la fonction post l'id de l'article qui récupere l'article et les com lié
+        post($postId, $message);
     }
 }
-//get postbycomment(idcom)
-//return postId
+
 
 function viewEditCom($comId)
 {
