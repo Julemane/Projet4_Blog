@@ -45,7 +45,7 @@ function editPost($id, $title, $author, $content)
         throw new Exception('Impossible d\'éditer l\'article');
     }
     else {
-        header('Location: index.php?action=post&id='.$id);
+        header('location:index.php?action=post&id='.$id);
     }
 }
 
@@ -78,12 +78,14 @@ function signalCom($comId)
          $message = $e->getMessage();
          //On récupère l'id de l'article sur lequel était l'user avant signalement
          $chaine = $_SERVER['HTTP_REFERER'];
-         $postId = substr ($chaine, strlen ($chaine) - 2);
+         $postId = substr($chaine, strlen($chaine) - 2);
          //La fonction va renvoyer l'user sur l'article dont il a signalé le commentaire et affiche le message
          signaledCommentPost($postId, $message);
          header('location:index.php?action=post&id='.$postId);
     }
 }
+//get postbycomment(idcom)
+//return postId
 
 function viewEditCom($comId)
 {
@@ -102,7 +104,7 @@ function editCom($id, $author, $comment, $status)
 
     }
     else {
-        header('Location:index.php?action=manageComments');
+        header('location:index.php?action=manageComments');
     }
 
 }
@@ -115,7 +117,7 @@ function deleteCom($comId)
     }
     else {
 
-        header('Location: index.php?action=manageComments');
+        header('location:index.php?action=manageComments');
     }
 }
 

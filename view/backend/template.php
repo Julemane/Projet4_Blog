@@ -6,7 +6,7 @@
         <link href="public/css/style.css" rel="stylesheet" />
 
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=pp4ravxp96bp5jr1g99lythy8d9dyxrx6o3fddzdaryt7fcr"></script>
-        <script>tinymce.init({ selector:'textarea' });</script>
+        <script>tinymce.init({ selector:'textarea#postContent' });</script>
 
 
     </head>

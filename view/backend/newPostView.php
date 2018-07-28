@@ -16,7 +16,7 @@
   </p>
   <p>
     <label>Contenu de votre article
-      <textarea name="content" rows="10" cols="50">
+      <textarea id="postContent" name="content" rows="10" cols="50">
       </textarea>
   </label>
   </p>

@@ -11,7 +11,7 @@
     <input type="text" name="author" value="<?php echo $post['author']; ?>" >
   </label>
   <label>Contenu
-    <textarea name="content" rows="15" cols="80"/> <?php echo $post['content']; ?>  </textarea>
+    <textarea id="postContent" name="content" rows="15" cols="80"/> <?php echo $post['content']; ?>  </textarea>
   </label>
   <input type="submit" name="valider" value="Valider"/>
 </form>
