@@ -175,7 +175,6 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();
@@ -189,14 +188,18 @@ try {
 
 //Gestion des erreurs
 catch(Exception $e) {
-    //passage du message d'erreur a listPost et affichage dans listPostsView
-    //listPosts($e->getMessage());
     ob_start();
-    echo 'Erreur : ' . $e->getMessage();
-    echo '</br>';
-    echo'<p>Retour à <a href="index.php">l\'accueil</a>';
+    ?>
+
+    <div id="errorPage">
+        <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+        <p>Retour à <a href="index.php">l'accueil</a></p>
+    </div>
+
+    <?php
     $content = ob_get_clean();
 
     require('view/frontend/template.php');
 
 }
+?>
