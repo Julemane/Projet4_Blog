@@ -1,4 +1,8 @@
 
-<footer>
-  <p>Propriété de <?php echo AUTHOR; ?>, réalisé par Jérémy Hennebique</p>
-</footer>
+<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;<?php echo AUTHOR; ?>, réalisation Jérémy Hennebique</p>
+      </div>
+      <!-- /.container -->
+    </footer>

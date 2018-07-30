@@ -23,7 +23,7 @@ class CommentManager extends Manager
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT id, post_id, author, comment, status, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments  ORDER BY status DESC');
+        $comments = $db->query('SELECT id, post_id, author, comment, status, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments  ORDER BY status DESC, comment_date_fr DESC');
         return $comments;
     }
 

@@ -2,17 +2,17 @@
 
 
 <?php ob_start(); ?>
-
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
     <tr>
-        <th>Identifiant</th>
-        <th>Article</th>
-        <th>Auteur</th>
-        <th>Commentaire</th>
-        <th>Date de publication</th>
-        <th>Statut</th>
-        <th>Editer</th>
-        <th>Supprimer</th>
+        <th scope="col">ID</th>
+        <th scope="col">Article</th>
+        <th scope="col">Auteur</th>
+        <th scope="col">Commentaire</th>
+        <th scope="col">Date de publication</th>
+        <th scope="col">Statut</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
 
     <tr>
@@ -20,20 +20,24 @@
         while ($data = $comments->fetch()) {
             ?>
 
-        <td><?php echo nl2br(htmlspecialchars($data['id'])); ?></td>
+        <th scope="row"><?php echo nl2br(htmlspecialchars($data['id'])); ?></th>
         <td><a href="index.php?action=post&id=<?php echo htmlspecialchars($data['post_id']); ?>" target=_blank>Voir l'article</a></td>
         <td><?php echo htmlspecialchars($data['author']); ?></td>
         <td><?php echo htmlspecialchars($data['comment']); ?></td>
         <td><?php echo htmlspecialchars($data['comment_date_fr']); ?></td>
             <td>
                 <?php if($data['status'] == 'valid'){
-                        echo 'Non signalé';
+                        ?>
+                        <span id="statusValid"><p>Non signalé</p></span>
+                        <?php
                         }else{
-                            echo'Signalé';
+                        ?>
+                        <span id="statusWarning"><p>Signalé</p></span>
+                        <?php
                         }
          ?></td>
         <td><a href="index.php?action=editCommentView&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
-        <td><a href="index.php?action=deleteComment&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')">Supprimer</a></td>
+        <td><a href="index.php?action=deleteComment&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
 
     </tr>
 
@@ -43,7 +47,7 @@
         ?>
 
     </table>
-
+</div>
 
 <?php $content = ob_get_clean(); ?>
 

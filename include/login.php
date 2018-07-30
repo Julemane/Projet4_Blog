@@ -1,26 +1,16 @@
  <!--Espace de login-->
   <section id="login">
-    <h4>Connexion</h4>
     <form action="index.php?action=login" method="post">
-        <label>Pseudo
-            <input type="text" name="userNickname" required>
-        </label>
-        <label>Mot de passe
-            <input type="password" name="userPassword" required>
-        </label>
-            <input type="submit" value="Se connecter">
-        </form>
-      <span id="authInfo">
-      <?php
-        if(isset($authInfo)){
-          echo $authInfo;
-          //On propose de créer un compte si jamais l'user n'en à pas
-          include('accountCreation.php');
-      ?>
-        <p><a href="index.php">Retour à l'accueil</a></p>
-      <?php
-        }
-      ?>
-      </span>
+  <div class="form-group">
+    <label for="UserNickname">Pseudo</label>
+    <input type="text" class="form-control" id="userNickname" placeholder="Votre Pseudo" name="userNickname" required>
+  </div>
+  <div class="form-group">
+    <label for="userPassword">Password</label>
+    <input type="password" class="form-control" id="userPassword" placeholder="Password" name="userPassword" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Se connecter</button>
+</form>
+
 
   </section>

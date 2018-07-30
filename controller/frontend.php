@@ -78,7 +78,16 @@ function verifyMember($userPassword, $userNickname)
     }
     catch(Exception $e){
          $authInfo = $e->getMessage();
-         require('include/login.php');
+         ob_start();
+         ?>
+         <div id="wrongPass">
+            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+            <?php include('include/login.php');?>
+            <p>Pas de compte ? <a href="index.php?action=creationUser">Créer un compte</a></p>
+        </div>
+        <?php
+        $content = ob_get_clean();
+        require('view/frontend/template.php');
     }
 }
 
@@ -122,3 +131,5 @@ function logout()
     session_destroy ();
     header('location:index.php');
 }
+
+?>

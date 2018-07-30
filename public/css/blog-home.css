@@ -1,0 +1,32 @@
+/*!
+ * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+
+}
+/*BACK commentaire valide*/
+#statusValid p {
+  color: rgb(71, 198, 7);
+}
+
+/*BACK commentaire signalé*/
+#statusWarning p {
+  color: rgb(226, 2, 2);
+}
+
+/*FRONT message signalement de commentaire*/
+#signalMessage p {
+
+  font-size: 1.5em;
+
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
