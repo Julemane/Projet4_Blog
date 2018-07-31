@@ -2,7 +2,7 @@
 
 
 <?php ob_start(); ?>
-
+<img class="card-img-top" src="<?php echo $post['post_img']?>" alt="illustration article" enctype="multipart/form-data">
 <form action="index.php?action=editPost&id=<?php echo $post['id'] ?>" method="post">
   <div class="form-group">
       <label for="author">Auteur</label>
@@ -16,6 +16,7 @@
       <label for="postContent">Contenu de l'article</label>
       <textarea id="postContent" name="content" rows="15"><?php echo $post['content']; ?></textarea>
   </div>
+
   <button type="submit" class="btn btn-primary">Publier</button>
 </form>
 

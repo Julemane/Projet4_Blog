@@ -3,7 +3,7 @@
 
 <?php ob_start(); ?>
 
-<form action="index.php?action=newPost" method="post">
+<form action="index.php?action=newPost" method="post" enctype="multipart/form-data">
   <div class="form-group">
       <label for="author">Auteur</label>
       <input type="text" class="form-control" id="author"  placeholder="Votre peudo" name="author" value="" required>
