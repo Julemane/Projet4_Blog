@@ -14,10 +14,14 @@
   </div>
   <div class="form-group">
       <label for="postContent">Contenu de l'article</label>
-      <textarea id="postContent" name="content" rows="15"><?php echo $post['content']; ?></textarea>
+      <textarea id="postContent" name="content" rows="10"><?php echo $post['content']; ?></textarea>
   </div>
-  <input type="file" name="image" id="imageToUpload">
-  <button type="submit" class="btn btn-primary">Publier</button>
+  <div class="custom-file">
+    <label class="custom-file-label" for="imageToUpload">Selectionnez une image</label>
+    <input type="file" class="custom-file-input" id="imageToUpload" name="image">
+  </div>
+    <button id="postButton" type="submit" class="btn btn-primary">Publier</button>
+
 </form>
 
 <?php $content = ob_get_clean(); ?>

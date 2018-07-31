@@ -11,7 +11,8 @@
         <div class="input-group">
           <ul>
             <li><a href="index.php?action=writeNewPost">Ecrire un nouvel article</a></li>
-            <li><a href="index.php?action=managePosts">Editer / supprimer un article publié</a></li>
+            <li><a href="index.php?action=managePosts">Editer / supprimer un article publié</a>
+            </li>
           </ul>
         </div>
       </div>

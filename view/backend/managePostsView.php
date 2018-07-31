@@ -3,6 +3,7 @@
 
 <?php ob_start(); ?>
 
+<p>Ici sont listés tous les articles de votre blog, vous pouvez en éditer le contenu, leurs ajouter une image en cliquant sur le lien d'édition de l'article ou bien le supprimer.</p>
 <table class="table table-striped">
     <tr>
         <th scope="col">ID</th>

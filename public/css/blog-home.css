@@ -6,6 +6,7 @@
 
 body {
   padding-top: 54px;
+  padding-bottom: 54px;
 
 }
 
@@ -18,6 +19,10 @@ body {
 /*suppression puces du menu de acces rapide*/
 #quickNav ul {
   list-style-type:none;
+}
+/*ajustement bouton publié article*/
+#postButton{
+margin-top:20px;
 }
 
 /*commentaire signalé*/
