@@ -119,7 +119,8 @@ try {
         elseif($_GET['action'] == 'editPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0){
-                    editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content']);
+                    $imgUrl = getImgUrl();
+                    editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content'], $imgUrl);
                 }else{
                     throw new Exception('Aucun id d\'article');
                 }

@@ -43,7 +43,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card my-4">
+              <div class="card my-4" id="quickNav">
                 <h5 class="card-header">Accès rapide</h5>
                 <div class="card-body">
                   <div class="input-group">

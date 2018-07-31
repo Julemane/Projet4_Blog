@@ -16,6 +16,8 @@
           <!-- Date/Time -->
           <p>Le <?= $post['creation_date_fr'] ?> </p>
           <hr>
+          <img class="img-fluid rounded" src="<?php echo $post['post_img']?>" alt="illustration article">
+          <hr>
           <!-- Post Content -->
           <p class="lead"><?= nl2br($post['content']) ?></p>
           <p>

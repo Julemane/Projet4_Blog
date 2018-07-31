@@ -9,8 +9,10 @@
       <h5 class="card-header">Gestion des articles</h5>
       <div class="card-body">
         <div class="input-group">
-          <a href="index.php?action=writeNewPost">Ecrire un nouvel article</a>
-          <a href="index.php?action=managePosts">Editer / supprimer un article publié</a>
+          <ul>
+            <li><a href="index.php?action=writeNewPost">Ecrire un nouvel article</a></li>
+            <li><a href="index.php?action=managePosts">Editer / supprimer un article publié</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -22,7 +24,9 @@
       <h5 class="card-header">Gestion des commentaires</h5>
       <div class="card-body">
         <div class="input-group">
-          <a href="index.php?action=manageComments">Afficher les commentaires</a>
+          <ul>
+            <li><a href="index.php?action=manageComments">Afficher les commentaires</a></li>
+          </ul>
         </div>
       </div>
     </div>

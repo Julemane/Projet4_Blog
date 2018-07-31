@@ -8,17 +8,26 @@ body {
   padding-top: 54px;
 
 }
-/*BACK commentaire valide*/
+
+/*BACKEND */
+
+/*commentaire valide*/
 #statusValid p {
   color: rgb(71, 198, 7);
 }
+/*suppression puces du menu de acces rapide*/
+#quickNav ul {
+  list-style-type:none;
+}
 
-/*BACK commentaire signalé*/
+/*commentaire signalé*/
 #statusWarning p {
   color: rgb(226, 2, 2);
 }
 
-/*FRONT message signalement de commentaire*/
+/*FRONTEND*/
+
+/* message signalement de commentaire*/
 #signalMessage p {
 
   font-size: 1.5em;

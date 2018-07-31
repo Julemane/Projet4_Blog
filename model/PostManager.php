@@ -34,14 +34,12 @@ class PostManager extends Manager //la connexion Ã  la Bdd est maintenant heritÃ
     return $affectedLines;
     }
 
-    public function postEdit($id, $title, $author, $content) {
+    public function postEdit($id, $title, $author, $content, $imgUrl) {
     $db = $this->dbConnect();
-    $req = $db->prepare('UPDATE posts SET title = ?, author = ?, content = ? WHERE id = ?');
-    $post = $req->execute(array($title, $author, $content, $id));
+    $req = $db->prepare('UPDATE posts SET title = ?, author = ?, content = ?, post_img = ? WHERE id = ?');
+    $post = $req->execute(array($title, $author, $content, $imgUrl, $id ));
     return $post;
     }
-
-
 
 
 }

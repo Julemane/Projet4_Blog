@@ -37,10 +37,10 @@ function deletePost($postId)
     }
 }
 
-function editPost($id, $title, $author, $content)
+function editPost($id, $title, $author, $content, $imgUrl)
 {
     $postManager = new PostManager();
-    $affectedLines = $postManager->postEdit($id, $title, $author, $content);
+    $affectedLines = $postManager->postEdit($id, $title, $author, $content, $imgUrl);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'éditer l\'article');
     }
@@ -117,6 +117,17 @@ function deleteCom($comId)
 
         header('location:index.php?action=manageComments');
     }
+}
+//upload l'image sur le serveur et retourne son URL
+function getImgUrl()
+{
+    $target_dir = "public/images/";
+    $target_file = $target_dir . basename($_FILES['image']['name']);
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+
+    return $target_file;
 }
 
 
