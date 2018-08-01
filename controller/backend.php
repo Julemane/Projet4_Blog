@@ -39,6 +39,7 @@ function deletePost($postId)
 
 function editPost($id, $title, $author, $content, $imgUrl)
 {
+    //si pas d'image selectionné on ne fait pas l'update de l'image et on garde celle présente
     if($imgUrl == null){
         $postManager = new PostManager();
         $affectedLines = $postManager->postEdit($id, $title, $author, $content);
@@ -47,6 +48,7 @@ function editPost($id, $title, $author, $content, $imgUrl)
         }else {
             header('location:index.php?action=post&id='.$id);
         }
+    //Sinon on fait une update compete de l'article
      }else{
         $postManager = new PostManager();
         $affectedLines = $postManager->postEditImg($id, $title, $author, $content, $imgUrl);

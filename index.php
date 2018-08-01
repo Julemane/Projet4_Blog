@@ -119,10 +119,11 @@ try {
         elseif($_GET['action'] == 'editPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0){
+                    //Image présente dans l'input file
                     if(isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])){
                         $imgUrl = getImgUrl();
                         editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content'], $imgUrl);
-
+                    //si pas d'image selectionner
                     }else{
                         editPost($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content']);
                     }
