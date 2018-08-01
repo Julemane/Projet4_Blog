@@ -137,8 +137,17 @@ function getImgUrl()
     $target_file = $target_dir . basename($_FILES['image']['name']);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+    if($imageFileType == "jpg" OR $imageFileType == "png" OR $imageFileType == "jpeg"
+    OR $imageFileType == "gif" ){
+        if ($_FILES["image"]["size"] <= 4000000){
+             move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
+        }else{
+            throw new Exception('Fichier trop volumineux, 4Mo maximum');
+        }
+    }else{
+        throw new Exception('Extension d\'image incompatible, veuillez charger une image .jpg, .png, .jpeg, .gif');
+    }
     return $target_file;
 }
 
