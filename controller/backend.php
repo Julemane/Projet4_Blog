@@ -39,13 +39,23 @@ function deletePost($postId)
 
 function editPost($id, $title, $author, $content, $imgUrl)
 {
-    $postManager = new PostManager();
-    $affectedLines = $postManager->postEdit($id, $title, $author, $content, $imgUrl);
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'éditer l\'article');
-    }
-    else {
-        header('location:index.php?action=post&id='.$id);
+    if($imgUrl == null){
+        $postManager = new PostManager();
+        $affectedLines = $postManager->postEdit($id, $title, $author, $content);
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'éditer l\'article');
+        }else {
+            header('location:index.php?action=post&id='.$id);
+        }
+     }else{
+        $postManager = new PostManager();
+        $affectedLines = $postManager->postEditImg($id, $title, $author, $content, $imgUrl);
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'éditer l\'article');
+        }
+        else {
+            header('location:index.php?action=post&id='.$id);
+        }
     }
 }
 
