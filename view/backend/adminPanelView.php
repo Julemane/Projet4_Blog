@@ -33,6 +33,20 @@
     </div>
   </div>
 
+  <div class="col-md-6">
+      <!-- Gestion des commentaires-->
+    <div class="card my-4">
+      <h5 class="card-header">Gestion des membres</h5>
+      <div class="card-body">
+        <div class="input-group">
+          <ul>
+            <li><a href="index.php?action=manageUsers">liste des membres</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 

@@ -30,7 +30,7 @@ class CommentManager extends Manager
     public function warnedCom($comId)
     {
         $db = $this->dbConnect();
-        $comment = $db->prepare('UPDATE comments SET status="warning" WHERE id='.$_GET['id']);
+        $comment = $db->prepare('UPDATE comments SET status="warning" WHERE id='.$comId);
         $affectedLines = $comment->execute(array($comId));
         return $affectedLines;
 
@@ -66,7 +66,7 @@ class CommentManager extends Manager
     public function commentDelete($comId)
     {
         $db = $this->dbConnect();
-        $comment = $db->prepare("DELETE FROM comments WHERE id=".$_GET['id']);
+        $comment = $db->prepare("DELETE FROM comments WHERE id=".$comId);
         $affectedLines = $comment->execute(array($comId));
         return $affectedLines;
     }

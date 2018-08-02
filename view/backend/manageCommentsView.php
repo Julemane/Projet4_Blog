@@ -4,6 +4,7 @@
 <?php ob_start(); ?>
 <div class="table-responsive">
 <table class="table table-striped">
+    <p>Ici sont listés tous les commentaires de votre blog, vous pouvez en éditer le contenu, modifier le statut des commentaire signalés en cliquant sur "Editer".</p>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Article</th>
@@ -37,7 +38,7 @@
                         }
          ?></td>
         <td><a href="index.php?action=editCommentView&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
-        <td><a href="index.php?action=deleteComment&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
+        <td><a href="index.php?action=deleteComment&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer ce commentaire ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
 
     </tr>
 

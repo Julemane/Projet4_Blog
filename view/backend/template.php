@@ -29,8 +29,10 @@
             <div class="col-md-8">
               <h1 class="my-4"><strong><?php echo SITE_TITLE?>
               </strong></h1>
-
+                <h5>Vous êtes ici : <?php echo substr($title, strlen(SITE_NAME)+1); ?> </h5>
               <?= $content ?>
+              <p><a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
+
             </div>
             <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
@@ -57,18 +59,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card my-4">
-                <h5 class="card-header">Navigation</h5>
-                <div class="card-body">
-                  <div class="input-group">
-                    <p>Vous êtes ici : <?php echo substr($title, strlen(SITE_NAME)+1); ?> </p>
-              <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Page précédente</a>
-
-
-                  </div>
-                </div>
-              </div>
-
 
             </div>
           </div>

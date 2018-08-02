@@ -6,13 +6,13 @@
     {
       if($_SESSION['userLevel'] == 'admin' ){
         ?>
-        Connecté en tant qu'administrateur : <?php echo htmlspecialchars($_SESSION['nickname']);
+        Connecté en tant qu'administrateur :<strong> <?php echo htmlspecialchars($_SESSION['nickname']);
 
       }else{
-        ?>
-        Vous êtes connecté en tant que membre : <?php echo htmlspecialchars($_SESSION['nickname']);
+        ?></strong>
+        Vous êtes connecté en tant que membre : <strong><?php echo htmlspecialchars($_SESSION['nickname']);
       }
-      ?>
+      ?></strong>
       <p><a href="index.php?action=logout">Se déconnecter</a></p>
       <?php
     }

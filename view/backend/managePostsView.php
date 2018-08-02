@@ -18,7 +18,6 @@
         <?php
         while ($data = $posts->fetch()) {
             ?>
-
         <th scope="row"><?php echo nl2br(htmlspecialchars($data['id'])); ?></th>
         <td><?php echo htmlspecialchars($data['title']); ?></td>
         <td><?php echo htmlspecialchars($data['author']); ?></td>

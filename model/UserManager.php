@@ -1,6 +1,6 @@
 <?php
 require_once("model/Manager.php");
-class RegisterManager extends Manager
+class UserManager extends Manager
 
 {
     //passage en parametre des valeurs du formulaire et du mdp haché
@@ -30,5 +30,21 @@ class RegisterManager extends Manager
 
       return $nickname['nickname'];
     }
+
+    public function listUsers()
+    {
+      $db = $this->dbConnect();
+      $users = $db->query('SELECT id, password, nickname, mail, userLevel, DATE_FORMAT(inscription_date, \'%d/%m/%Y \') AS inscription_date_fr FROM members');
+      return $users;
+
+    }
+
+    public function userDelete($userId) {
+    $db = $this->dbConnect();
+    $user = $db->prepare("DELETE FROM members WHERE id=".$userId);
+    $affectedLines = $user->execute(array($userId));
+    return $affectedLines;
+    }
+
 
 }

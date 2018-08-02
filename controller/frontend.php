@@ -4,7 +4,7 @@ session_start();
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/AuthManager.php');
-require_once('model/RegisterManager.php');
+require_once('model/UserManager.php');
 
 //AFFICHE LA LISTE DES ARTICLES
 function listPosts()
@@ -96,16 +96,16 @@ function addMember($nickname, $mail, $password, $password2)
 {
     try
     {
-        $registerManager = new RegisterManager();
+        $userManager = new UserManager();
         //Vérification de l'existance ou non du pseudo dans la bdd et verification sur les champs du formulaire
-        $checkMember = $registerManager->checkNickname($nickname);
+        $checkMember = $userManager->checkNickname($nickname);
         if(!$checkMember){
             if(preg_match('#[a-zA-Z0-9_]#', $nickname)){
                 if($password == $password2){
                     if(preg_match(" /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ", $mail)){
                         $pass_hash = password_hash($password, PASSWORD_DEFAULT);
                         //envoi au modele pour insertion dans BDD
-                        $push = $registerManager->pushMember($nickname, $pass_hash, $mail);
+                        $push = $userManager->pushMember($nickname, $pass_hash, $mail);
                         throw new Exception('Votre compte a été créé avec succès');
                     }else{
                        throw new Exception('veuillez vérifier votre adresse email');

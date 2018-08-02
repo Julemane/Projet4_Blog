@@ -183,6 +183,26 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //vers la page de gestion des membres
+        elseif($_GET['action'] == 'manageUsers'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listUsers();
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //supression d'un membre
+        elseif($_GET['action'] == 'deleteUser'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deleteUser($_GET['id']);
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();
