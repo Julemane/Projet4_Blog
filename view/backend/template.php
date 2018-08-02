@@ -55,7 +55,18 @@
                       <li><a href="index.php?action=managePosts">Gestion des articles</a></li>
                       <li><a href="index.php?action=manageComments">Gestion des commentaires</a></li>
                     </ul>
+                  </div>
+                </div>
+              </div>
 
+              <div class="card my-4">
+                <h5 class="card-header">Accessibilité</h5>
+                <div class="card-body">
+                  <div class="input-group">
+                    <p><a href="https://achecker.ca/checker/index.php?uri=referer&gid=WCAG2-AAA">
+                      <img src="https://achecker.ca/images/icon_W2_aaa.jpg" alt="WCAG 2.0 (Level AAA)" height="32" width="102" />
+                    </a>
+                    </p>
                   </div>
                 </div>
               </div>

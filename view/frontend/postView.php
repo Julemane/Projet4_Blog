@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-11">
           <!-- Title -->
-          <h1 class="mt-4"><?= htmlspecialchars($post['title']) ?></h1>
+          <h2 class="mt-4"><?= htmlspecialchars($post['title']) ?></h2>
           <!-- Author -->
           <p class="lead">
             Par

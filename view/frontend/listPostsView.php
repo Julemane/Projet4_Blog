@@ -10,7 +10,7 @@ while ($data = $posts->fetch())
 <div class="card mb-4">
   <img class="card-img-top" src="<?php echo $data['post_img']?>" alt="illustration article">
     <div class="card-body">
-        <h2 class="card-title"><?= htmlspecialchars($data['title']) ?></h2>
+        <h3 class="card-title"><?= htmlspecialchars($data['title']) ?></h3>
         <p class="card-text"><?= nl2br($data['post_summary'])?>...</p>
         <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary">Lire la suite</a>
     </div>

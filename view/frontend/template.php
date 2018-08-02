@@ -5,8 +5,19 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Projet 4 étudiant Openclassrooms. Réalisation d'un CMS pour un écrivain en PHP avec Mysql en suivant une architecture MVC. Intégré avec Bootstrap 4.">
+    <meta name="author" content="Jérémy Hennebique">
+
+    <meta property="og:image" content="http://blog-ecrivain.jeremy-hennebique.com/public/images/alaskaRoad.jpg" />
+    <meta property="og:url" content="http://blog-ecrivain.jeremy-hennebique.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Billet simple pour l'Alaska par Jean forteroche" />
+    <meta property="og:description" content="Projet 4 étudiant Openclassrooms. Réalisation d'un CMS pour un écrivain en PHP avec Mysql en suivant une architecture MVC. Intégré avec Bootstrap 4." />
+    <!--Vcard twitter-->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="Billet simple pour l'Alaska" />
+    <meta name="twitter:creator" content="Jérémy Hennebique" />
+    <!--Favincon-->
 
     <title><?= $title ?></title>
 

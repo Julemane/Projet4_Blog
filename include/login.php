@@ -1,8 +1,8 @@
  <!--Espace de login-->
-  <section id="login">
+  <div id="login">
     <form action="index.php?action=login" method="post">
   <div class="form-group">
-    <label for="UserNickname">Pseudo</label>
+    <label for="userNickname">Pseudo</label>
     <input type="text" class="form-control" id="userNickname" placeholder="Votre Pseudo" name="userNickname" required>
   </div>
   <div class="form-group">
@@ -13,4 +13,4 @@
 </form>
 
 
-  </section>
+  </div>

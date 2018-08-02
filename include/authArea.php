@@ -1,5 +1,5 @@
 <!--Zone info membre connecter-->
-  <section id=userInfo>
+  <div id="userInfo">
    <?php
    //Si Mmembre connecter
     if (isset($_SESSION['nickname']))
@@ -22,4 +22,4 @@
       include('accountCreation.php');
     }
   ?>
-  </section>
+  </div>

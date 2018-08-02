@@ -2,8 +2,9 @@
 
 
 <?php ob_start(); ?>
+
 <div class="row" id="adminCards">
-  <div class="col-md-6">
+  <div class="col-lg-6">
       <!-- Gestion des articles-->
     <div class="card my-4">
       <h5 class="card-header">Gestion des articles</h5>
@@ -19,7 +20,7 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-lg-6">
       <!-- Gestion des commentaires-->
     <div class="card my-4">
       <h5 class="card-header">Gestion des commentaires</h5>
@@ -33,8 +34,8 @@
     </div>
   </div>
 
-  <div class="col-md-6">
-      <!-- Gestion des commentaires-->
+  <div class="col-lg-6">
+      <!-- Gestion des Membres-->
     <div class="card my-4">
       <h5 class="card-header">Gestion des membres</h5>
       <div class="card-body">
@@ -48,16 +49,6 @@
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 <?php $content = ob_get_clean(); ?>
 
