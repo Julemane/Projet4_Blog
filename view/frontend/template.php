@@ -32,7 +32,7 @@
         <!--Debut Nav-->
         <?php include("include/nav.php"); ?>
          <!--Fin Nav-->
-        <div class="container">
+        <div id="content" class="container">
           <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8">

@@ -221,7 +221,7 @@ catch(Exception $e) {
 
     <div id="errorPage">
         <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
-        <p>Retour à <a href="index.php">l'accueil</a></p>
+        <p><a href="index.php">Retour à l'accueil</a></p>
     </div>
 
     <?php
